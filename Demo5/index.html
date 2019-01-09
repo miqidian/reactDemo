@@ -1,0 +1,36 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title>React Demo5</title> 
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+   <script type="text/babel">
+       var ListComponents = React.createClass({
+           render:function(){
+               return (
+                   <ul>
+                       {
+                           React.Children.map(this.props.children,function(child){
+                               return <li>{child}</li>;
+                           })
+                       }
+                   </ul>
+               );
+           }
+       });
+
+       ReactDOM.render(
+               <ListComponents>
+                   <span>数据一</span>
+                   <span>数据二</span>
+                   <span>数据三</span>
+               </ListComponents>,
+           document.body
+       );
+   </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title>React Demo20</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+   <script type="text/babel">
+      var RepoList = React.createClass({
+        getInitialState:function(){
+          return {
+            name:'',
+            full_name:'',
+            data:null,
+            loading:true
+          }
+        },
+        componentDidMount:function(){
+          this.props.promise.then(
+            value => this.setState({loading:false,data:value})
+          );
+        },
+        render:function(){
+          if(this.state.loading){
+            return (
+              <span>loading......</span>
+            )
+          }else{
+            var repos = this.state.data.items;
+            var repList = repos.map(function(rep){
+              return (
+                <div>
+                  <h2>name:{rep.name}</h2>
+                  <p>full_name:{rep.full_name}</p>
+                </div>
+              );
+            });
+            return (
+              <div>{repList}</div>
+            )
+          }
+          
+        }
+      });
+
+       ReactDOM.render(
+           <RepoList promise={$.getJSON('https://api.github.com/search/repositories?q=javascript&sort=stars')}/>,
+           document.getElementById('example')
+       );
+   </script>
+</body>
+</html>

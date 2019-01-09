@@ -1,0 +1,30 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title>React Demo9</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+   <script type="text/babel">
+      //var title = 123;
+      var title = "刘志强";
+      var Components = React.createClass({
+          propTypes:{
+              title:React.PropTypes.string.isRequired
+          },
+          render:function(){
+              return <h1>这里加粗的内容必须是字符串{this.props.title}</h1>
+          }
+      });
+
+       ReactDOM.render(
+           <Components title={title} />,
+           document.getElementById('example')
+       );
+   </script>
+</body>
+</html>

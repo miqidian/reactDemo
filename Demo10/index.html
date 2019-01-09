@@ -1,0 +1,33 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title>React Demo10</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+   <script type="text/babel">
+       var Components = React.createClass({
+           render:function(){
+               //我这是注释
+               return (
+                       <div>
+                           {/* 这里是注释说明 */}
+                           <h1>关于注释</h1>
+                           <div dangerouslySetInnerHTML = {{__html:"<p>注释外部有标签包住，必须用{/* 这里写数字 */}</p>"}}/>
+                           <div dangerouslySetInnerHTML = {{__html: "<p>爱死费崇政{}</p>"}} />
+                       </div>
+               )
+           }
+       });
+
+       ReactDOM.render(
+           <Components />,
+           document.getElementById('example')
+       );
+   </script>
+</body>
+</html>

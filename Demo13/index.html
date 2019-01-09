@@ -1,0 +1,53 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title>React Demo13</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+   <script type="text/babel">
+       var Components = React.createClass({
+           getInitialState:function(){
+            return {
+              username:'',
+              lastGistUr:''
+            }
+           },
+
+           componentDidMount:function(){
+            var serverquestUrl = this.props.source;
+            this.serverRequest = $.get(serverquestUrl,function(result){
+              var data = result[0];
+              this.setState({
+                username:data.owner.login,
+                lastGistUrl:data.html_url
+              });
+            }.bind(this));
+           },
+
+           componentWillUnmount:function(){
+            this.serverquest.abort();
+           },
+
+           render:function(){
+                return (
+                  <div>
+                    {this.state.username} 用户最新的 Gist 共享地址：
+                    <a href={this.state.lastGistUrl}>{this.state.lastGistUrl}</a>
+                  </div>
+                )
+           }
+       });
+
+       ReactDOM.render(
+           <Components source="https://api.github.com/users/octocat/gists" />,
+           document.getElementById('example')
+       );
+   </script>
+</body>
+</html>

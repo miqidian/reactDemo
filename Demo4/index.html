@@ -1,0 +1,39 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title>React Demo4</title> 
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+   <div id="example"></div>
+   <!-- <script type="text/babel">
+     var MyComponent = React.createClass({
+        render:function(){
+          return <h1>hello world!</h1>;
+        }
+     });
+   
+     ReactDOM.render(
+        <MyComponent />,
+        document.getElementById('example')
+     );
+   </script> -->
+   <script type="text/babel">
+     var MyComponent = React.createClass({
+        render:function(){
+          return <h1>
+            hello {this.props.name}!
+          </h1>
+        }
+     });
+
+     ReactDOM.render(
+        <MyComponent name="world" />,
+        document.getElementById('example')
+     );
+   </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title>React Demo7</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+   <script type="text/babel">
+       var Components = React.createClass({
+           getDefaultProps:function () {
+               return {
+                   name:'liuzhiqiang'
+               }
+           },
+           render:function(){
+               return (
+                       <div>
+                           <h1>我的名字是：{this.props.name}</h1>
+                           <p>大家上午好</p>
+                       </div>
+               )
+           }
+       });
+
+       ReactDOM.render(
+           <Components />,
+           document.getElementById('example')
+       );
+   </script>
+</body>
+</html>

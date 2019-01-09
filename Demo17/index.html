@@ -1,0 +1,50 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title>React Demo17</title>
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div id="example"></div>
+   <script type="text/babel">
+
+      var Contact = React.createClass({
+        render:function(){
+          return (
+            <div onClick = {this.props.updateStateProp}>{this.props.myDataProp}</div>
+          )
+        }
+      });
+    
+      var Components = React.createClass({
+        getInitialState:function(){
+          return {
+            value:"hello world!"
+          }
+        },
+
+        handleVal:function(){
+          this.setState({
+            value:"我变成中文了!"
+          })
+        },
+        
+        render:function(){
+          var value = this.state.value;
+          return (
+            <Contact myDataProp = {value} updateStateProp = {this.handleVal}></Contact>
+          )
+        }
+      });       
+
+       ReactDOM.render(
+           <Components />,
+           document.getElementById('example')
+       );
+   </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!doctype html> 
+<html> 
+<head> 
+    <meta charset="utf-8"> 
+    <title>React Demo3</title> 
+    <script src="../build/react.js"></script>
+    <script src="../build/react-dom.js"></script>
+    <script src="../build/browser.min.js"></script>
+</head>
+<body>
+   <div id="example"></div>
+   <script type="text/babel">
+      var ary = [
+        '<h1>小学生，例会</h1>',
+        '<h1>中学生，例会</h1>',
+        '<h1>大学生，例会</h1>'
+      ];  
+           
+      ReactDOM.render(
+          <div>
+            {ary}
+          </div>,
+          document.getElementById('example')
+      );
+   </script>
+</body>
+</html>
